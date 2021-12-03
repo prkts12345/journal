@@ -9,8 +9,8 @@ export default () => {
 
     const id = (notes.length) ? notes[notes.length - 1].id + 1 : 0
         setNotes ([...notes, {id: Date.now(), message: input, date: date}])
-        setInput(null)
-        setDate (null)
+        setInput('')
+        setDate ('')
     }
     const deleteNote = (id, notes, setNotes,) => {
         setNotes (notes.filter(note => note.id != id))
@@ -18,7 +18,7 @@ export default () => {
     }
    const [notes, setNotes] = useState([...getNotesFromLocal()]);
    const [input, setInput] = useState('')
-   const [date, setDate] = useState(null)
+   const [date, setDate] = useState('')
 
    function getNotesFromLocal() {
        if(!!localStorage.getItem('notes')) {
@@ -37,9 +37,9 @@ export default () => {
             <form id="notes" onSubmit ={(e) => handleSubmit(e, notes, setNotes, input, setInput, date, setDate)}>
                 
                 <h1>Task To Do </h1>
-                <label for="task" name="task">TASK:</label>
+                <label htmlFor="task" name="task">TASK:</label>
                 <textarea rows="4" cols="50" onChange={(e) => setInput(e.target.value) } value={input} type="text" /> <br />
-                <label for="date" name="date">Date:</label>
+                <label htmlFor="date" name="date">Date:</label>
                 <input onChange={(e) => setDate(e.target.value) } value={date} type="date" style={{width:"165px"}} /> <br />
                 <button>Submit</button>
                 </form>    
